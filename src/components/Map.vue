@@ -145,7 +145,6 @@ export default {
           "esri/widgets/Legend",
           "esri/layers/FeatureLayer",
           "esri/widgets/LayerList",
-          // "esri/widgets/Feature",
         ],
         { css: true }
       ).then(
@@ -155,7 +154,6 @@ export default {
           Legend,
           FeatureLayer,
           LayerList,
-          // Feature
         ]) => {
           // Load features
           if (!this.$store.state.features.length) {
@@ -334,13 +332,15 @@ export default {
                       }
                     );
                     const result = results[0];
-                    const FID =
-                      result?.graphic?.attributes.FID;
+                    const OBJECTID =
+                      result?.graphic?.attributes.OBJECTID;
                     const feature = this.features.find(
-                      (f) => f.attributes.FID === FID
+                      (f) =>
+                        f.attributes.OBJECTID === OBJECTID
                     );
                     const isNewFeature =
-                      FID !== this.feature?.attributes.FID;
+                      OBJECTID !==
+                      this.feature?.attributes.OBJECTID;
                     // If we find a basin, update the focussed feature
                     if (feature && isNewFeature) {
                       this.updateFeature(feature);

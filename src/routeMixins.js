@@ -29,7 +29,8 @@ export default {
     // The selected feature (basin) if one is selected.
     feature() {
       return this.$store.state.features.find(
-        (f) => f.attributes.FID == this.$route.query.feature
+        (f) =>
+          f.attributes.OBJECTID == this.$route.query.feature
       );
     },
 
@@ -128,7 +129,8 @@ export default {
     // Update the 'feature' URL parameter
     updateFeature(feature) {
       this.push({
-        feature: feature.attributes.FID,
+        feature: feature.attributes.OBJECTID,
+        featureType: "stations",
       });
     },
 
